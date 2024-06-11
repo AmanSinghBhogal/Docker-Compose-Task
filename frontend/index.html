@@ -4,7 +4,59 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Web App Task</title>
-    <link rel="stylesheet" href="styles.css">
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+        }
+        .header {
+            text-align: center;
+            padding: 20px 0;
+            background-color: #f0f0f0;
+        }
+        .content {
+            padding: 20px;
+            text-align: center;
+        }
+        .footer {
+            background-color: #333;
+            color: #fff;
+            text-align: center;
+            padding: 20px 0;
+            width: 100%;
+        }
+        .sv{
+            background-color: greenyellow;
+            border-radius: 5px;
+            border: 1px solid black;
+            cursor: pointer;
+        }
+        .image{
+            width: 300px;
+            height: 300px;
+            margin: 20px 0;
+        }
+
+        #userDataContainer{
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+        }
+
+        #userDataTable{
+            border: 1px solid black;
+            text-align: center;
+            padding: 10px;
+        }
+
+        #userDataTable th,td{
+            min-width: 100px;
+            padding: 10px;
+        }
+    </style>
 </head>
 <body>
     <div class="header">
@@ -41,7 +93,55 @@
         All rights reserved @<script>document.write(new Date().getFullYear())</script>
     </div>
 
-    <script src="script.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', async function() {
+            try {
+                // Make a GET request to fetch all objects
+                const getResponse = await fetch('http://expressapp:5000/people');
+                const allObjects = await getResponse.json();
+                console.log('GET request successful:', allObjects);
+                
+                const tableBody = document.querySelector('#userDataTable tbody');
+            
+                // Populate the table with data
+                allObjects.forEach(item => {
+                const row = tableBody.insertRow();
+                const nameCell = row.insertCell(0);
+                const ageCell = row.insertCell(1);
+                nameCell.textContent = item.name;
+                ageCell.textContent = item.age;
+                });
+
+            } catch (error) {
+                console.error('Error:', error);
+            }
+        });
+
+        document.getElementById('userForm').addEventListener('submit', async function(event) {
+            event.preventDefault(); // Prevent the default form submission
+            
+            // Get the form data
+            const formData = new FormData(event.target);
+            const name = formData.get('name');
+            const age = formData.get('age');
+            
+            // Make a POST request to your API
+            try {
+            const response = await fetch('http://expressapp:5000/people', {
+                method: 'POST',
+                headers: {
+                'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ name, age })
+            });
+            const data = await response.json();
+            console.log('POST request successful:', data);
+            
+            } catch (error) {
+            console.error('Error:', error);
+            }
+        });
+    </script>
     
 </body>
 </html>
