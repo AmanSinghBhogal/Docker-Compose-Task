@@ -12,7 +12,8 @@ dotenv.config();
 // process.env.MYSQL_DATABASE -> "YOUR_RDS_DB_NAME"
 
 const connection = mysql.createPool({
-    host: 'mysql',
+    host: 'localhost',
+    port: 3306,
     user: 'root',
     password: 'root',
     database: 'webapp_task'
