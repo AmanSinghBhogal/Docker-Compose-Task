@@ -2,6 +2,8 @@ services:
   expressapp:
     build: ./api/
     command: sh -c "sleep 10s; npm run dev"
+    ports:
+      - '5000:5000'
     depends_on:
       - mysql
 

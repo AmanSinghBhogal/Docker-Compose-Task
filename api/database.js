@@ -18,7 +18,6 @@ const connection = mysql.createPool({
     database: process.env.MYSQL_DATABASE
 }).promise();
 
-
 // Fetching Records from the table
 export async function getRecords() {
     const [records] = await connection.query("SELECT * from people");
