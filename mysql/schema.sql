@@ -1,4 +1,4 @@
-CREATE DATABASE webapp_task;
+CREATE DATABASE IF NOT EXISTS webapp_task;
 USE webapp_task;
 
 CREATE TABLE people(

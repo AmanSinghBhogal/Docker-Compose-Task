@@ -1,0 +1,51 @@
+body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+}
+.header {
+    text-align: center;
+    padding: 20px 0;
+    background-color: #f0f0f0;
+}
+.content {
+    padding: 20px;
+    text-align: center;
+}
+.footer {
+    background-color: #333;
+    color: #fff;
+    text-align: center;
+    padding: 20px 0;
+    width: 100%;
+}
+.sv{
+    background-color: greenyellow;
+    border-radius: 5px;
+    border: 1px solid black;
+    cursor: pointer;
+}
+.image{
+    width: 300px;
+    height: 300px;
+    margin: 20px 0;
+}
+
+#userDataContainer{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+#userDataTable{
+    border: 1px solid black;
+    text-align: center;
+    padding: 10px;
+}
+
+#userDataTable th,td{
+    min-width: 100px;
+    padding: 10px;
+}
