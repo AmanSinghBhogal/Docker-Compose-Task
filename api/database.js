@@ -12,10 +12,10 @@ dotenv.config();
 // process.env.MYSQL_DATABASE -> "YOUR_RDS_DB_NAME"
 
 const connection = mysql.createPool({
-    host: process.env.MYSQL_HOST,
-    user: process.env.MYSQL_USER,
-    password: process.env.MYSQL_PASS,
-    database: process.env.MYSQL_DATABASE
+    host: 'mysql',
+    user: 'root',
+    password: 'root',
+    database: 'webapp_task'
 }).promise();
 
 // Fetching Records from the table
