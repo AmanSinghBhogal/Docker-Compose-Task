@@ -97,7 +97,7 @@
         document.addEventListener('DOMContentLoaded', async function() {
             try {
                 // Make a GET request to fetch all objects
-                const getResponse = await fetch('http://expressapp/people');
+                const getResponse = await fetch('http://13.233.200.84:5000/people');
                 const allObjects = await getResponse.json();
                 console.log('GET request successful:', allObjects);
                 
@@ -127,7 +127,7 @@
             
             // Make a POST request to your API
             try {
-            const response = await fetch('http://expressapp/people', {
+            const response = await fetch('http://13.233.200.84:5000/people', {
                 method: 'POST',
                 headers: {
                 'Content-Type': 'application/json'
